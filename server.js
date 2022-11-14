@@ -16,37 +16,37 @@ app.get("/app", (req, res) => {
     res.status(200).send("200 OK");
 })
 
-var s=6;
-var d=2
-var r=1;
+//const s=6;
+//var d=2
+//var r=1;
 
 app.get("/app/roll/", (req, res) => {
-    res.send(roll(s, d, r));
+    res.send(roll(6, 2, 1));
 })
 
 
 app.post("/app/roll/", (req, res) => {
-     s = parseInt(req.body.sides);
-     d = parseInt(req.body.dice);
-     r = parseInt(req.body.rolls);
+      const s = parseInt(req.body.sides);
+     const d = parseInt(req.body.dice);
+     const r= parseInt(req.body.rolls);
     res.send(roll(s, d, r));
 })
 
 app.get("/app/roll/:sides/", (req, res) => {
-    s = parseInt(req.params.sides);
+    const s = parseInt(req.params.sides);
     res.send(roll(s, 2, 1));
 })
 
 app.get("/app/roll/:sides/:dice/", (req, res) => {
-    s = parseInt(req.params.sides);
-    d = parseInt(req.params.dice);
+    const s = parseInt(req.params.sides);
+    const d = parseInt(req.params.dice);
     res.send(roll(s, d, 1));
 })
 
 app.get("/app/roll/:sides/:dice/:rolls", (req, res) => {
-    s = parseInt(req.params.sides);
-    d = parseInt(req.params.dice);
-    r = parseInt(req.params.rolls);
+    const s = parseInt(req.params.sides);
+    const d = parseInt(req.params.dice);
+    const r = parseInt(req.params.rolls);
     res.send(roll(s, d, r));
 })
 
