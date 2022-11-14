@@ -7,10 +7,10 @@ import minimist from "minimist";
 const app = express();
 const args = minimist(process.argv.slice(2));
 
-app.use(express.urlencoded({extended: true}));
 
 // Requirements start here
-var port= args.port||5000;
+const port= args.port||5000;
+app.use(express.urlencoded({extended: true}));
 
 app.get("/app", (req, res) => {
     res.status(200).send("200 OK");
