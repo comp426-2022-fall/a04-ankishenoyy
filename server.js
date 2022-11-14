@@ -1,11 +1,10 @@
-#!/usr/bin/env node
-
 import { roll } from './lib/roll.js';
 import express from "express";
 import minimist from "minimist";
 
 const app = express();
 const args = minimist(process.argv.slice(2));
+
 app.use(express.urlencoded({extended: true}));
 
 // Requirements start here
@@ -20,7 +19,7 @@ var d=2
 var r=1;
 
 app.get("/app/roll/", (req, res) => {
-    res.send(roll(s, s, r));
+    res.send(roll(s, d, r));
 })
 
 
