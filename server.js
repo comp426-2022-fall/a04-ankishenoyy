@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { roll } from './lib/roll.js';
 import express from "express";
 import minimist from "minimist";
@@ -20,6 +18,7 @@ app.get("/app", (req, res) => {
 
 app.get("/app/roll", (req, res) => {
     res.send(roll(6, 2, 1));
+    res.end();
 })
 
 
@@ -28,17 +27,20 @@ app.post("/app/roll", (req, res) => {
      const d = parseInt(req.body.dice);
      const r = parseInt(req.body.rolls);
     res.send(roll(s, d, r));
+    res.end();
 })
 
 app.get("/app/roll/:sides", (req, res) => {
     const s = parseInt(req.params.sides);
     res.send(roll(s, 2, 1));
+    res.end();
 })
 
 app.get("/app/roll/:sides/:dice", (req, res) => {
     const s = parseInt(req.params.sides);
     const d = parseInt(req.params.dice);
     res.send(roll(s, d, 1));
+    res.end();
 })
 
 app.get("/app/roll/:sides/:dice/:rolls", (req, res) => {
@@ -46,10 +48,12 @@ app.get("/app/roll/:sides/:dice/:rolls", (req, res) => {
     const d = parseInt(req.params.dice);
     const r = parseInt(req.params.rolls);
     res.send(roll(s, d, r));
+    res.end();
 })
 
 app.get("*", (req, res) => {
     res.status(404).send("404 NOT FOUND");
+    res.end();
 })
 
 app.listen(port);
